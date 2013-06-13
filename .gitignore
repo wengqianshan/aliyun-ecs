@@ -1,0 +1,7 @@
+#忽略组件文件
+node_modules/
+uploads/
+public/uploads/
+
+#特殊文件
+.DS_Store
