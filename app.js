@@ -6,9 +6,9 @@ var accessKeyId = 'your key';
 var accessKeySecret = 'your secret';
 function percentEncode(str){
 	var res = encodeURIComponent(str);
-	res = res.replace(/\+/, '%20');
-	res = res.replace(/\*/, '%2A');
-	res = res.replace(/%7E/, '~');
+	res = res.replace(/\+/g, '%20');
+	res = res.replace(/\*/g, '%2A');
+	res = res.replace(/%7E/g, '~');
 	return res;
 }
 //签名
