@@ -18,7 +18,6 @@ function getSignature(params, secret){
 	}
 	var queryString = _keys.join('&');
 	var stringToSign = 'GET&%2F&' + percentEncode(queryString);
-	//console.log(stringToSign, '---stringToSign')
 	var hmac = crypto.createHmac('sha1', secret + '&');
 	hmac.update(stringToSign);
 	return hmac.digest('base64');
@@ -56,7 +55,19 @@ ECS.prototype = {
 		console.log(sign);
 		request('http://ecs.aliyuncs.com/?' + sign, function(err, response, body){
 			//console.log(body)
-			callback.call(null, err, response, body);
+			var json = {};
+			try{
+				json = JSON.parse(body);
+			}catch(e){
+				json.Status = false;
+				json.Sessage = 'response error';
+			}
+			if(json.Code && json.Message){
+				json.Status = false;
+			}else{
+				json.Status = true;
+			}
+			callback.call(null, err, response, JSON.stringify(json));
 		})
 	},
 	//查询可用数据中心
