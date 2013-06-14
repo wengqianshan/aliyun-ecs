@@ -1,3 +1,10 @@
+/**
+ *
+ * aliyun ecs sdk
+ * @author xiaoshan5733
+ *
+ */
+
 var crypto = require('crypto');
 var request = require('request');
 
