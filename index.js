@@ -5,8 +5,8 @@
  *
  */
 
-var crypto = require('crypto');
-var request = require('request');
+var crypto = require('crypto'),
+    request = require('request');
 
 //签名编码
 function percentEncode(str){
@@ -56,7 +56,7 @@ ECS.prototype = {
 		data['Signature'] = getSignature(data, this.accessKeySecret);
 		var paramString = [];
 		for(var p in data){
-			paramString.push(p + '=' + data[p]);
+			paramString.push(encodeURIComponent(p) + '=' + encodeURIComponent(data[p]));
 		}
 		sign = paramString.join('&');
 		console.log(sign);
@@ -440,7 +440,7 @@ ECS.prototype = {
 		})
 	}
 };
-exports.ECS = ECS;
+module.exports = ECS;
 //example
 /*var ECS = require('./ECS').ECS;
 var ecs = new ECS('your_accessKeyId', 'your_accessKeySecret');

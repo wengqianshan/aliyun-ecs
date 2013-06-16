@@ -2,7 +2,7 @@
   "name": "aliyun-ecs",
   "version": "0.0.1",
   "description": "aliyun ecs for nodejs",
-  "main": "app.js",
+  "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -22,5 +22,6 @@
   "gitHead": "bc8b7b3fb4577b9be1f8efb20a37a9945f80db6f",
   "bugs": {
     "url": "https://github.com/xiaoshan5733/aliyun-ecs/issues"
-  }
+  },
+  "devDependencies": {}
 }
