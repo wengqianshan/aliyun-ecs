@@ -442,7 +442,7 @@ ECS.prototype = {
 };
 module.exports = ECS;
 //example
-/*var ECS = require('./ECS').ECS;
+/*var ECS = require('aliyun-ecs');
 var ecs = new ECS('your_accessKeyId', 'your_accessKeySecret');
 ecs.describeRegions(function(json){
 	console.log(json)
