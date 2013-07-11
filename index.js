@@ -127,7 +127,7 @@ ECS.prototype = {
 
 	},
 	//创建实例
-	createInstance: function(RegionId, ImageId, InstanceType, SecurityGroupId, InternetMaxBandwidthIn, InternetMaxBandwidthOut, callback){
+	createInstance: function(RegionId, ImageId, InstanceType, SecurityGroupId, InternetMaxBandwidthIn, InternetMaxBandwidthOut, HostName, Password, ZoneId, ClientToken, callback){
 		this.doRequest({
 			Action: 'CreateInstance',
 			RegionId: RegionId,
@@ -135,7 +135,11 @@ ECS.prototype = {
 			InstanceType: InstanceType,
 			SecurityGroupId: SecurityGroupId,
 			InternetMaxBandwidthIn: InternetMaxBandwidthIn,
-			InternetMaxBandwidthOut: InternetMaxBandwidthOut
+			InternetMaxBandwidthOut: InternetMaxBandwidthOut,
+            HostName: HostName,
+            Password: Password,
+            ZoneId: ZoneId,
+            ClientToken: ClientToken
 		}, function(err, response, body){
 			callback.call(null, body);
 		})
@@ -150,10 +154,11 @@ ECS.prototype = {
 		})
 	},
 	//停止实例
-	stopInstance: function(InstanceId, callback){
+	stopInstance: function(InstanceId, ForceStop, callback){
 		this.doRequest({
 			Action: 'StopInstance',
-			InstanceId: InstanceId
+			InstanceId: InstanceId,
+            ForceStop: ForceStop
 		}, function(err, response, body){
 			callback.call(null, body);
 		})
