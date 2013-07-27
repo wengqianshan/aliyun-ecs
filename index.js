@@ -126,6 +126,14 @@ ECS.prototype = {
 		})
 
 	},
+    //查询实例资源规格列表
+    describeInstanceTypes: function(callback){
+        this.doRequest({
+            Action: 'DescribeInstanceTypes'
+        }, function(err, response, body){
+            callback.call(null, body);
+        })
+    },
 	//创建实例
 	createInstance: function(RegionId, ImageId, InstanceType, SecurityGroupId, InternetMaxBandwidthIn, InternetMaxBandwidthOut, HostName, Password, ZoneId, ClientToken, callback){
 		this.doRequest({
@@ -422,24 +430,6 @@ ECS.prototype = {
 			Action: 'DeleteSecurityGroup',
 			SecurityGroupId: SecurityGroupId,
 			RegionId: RegionId
-		}, function(err, response, body){
-			callback.call(null, body);
-		})
-	},
-	//查看云服务器监控信息
-	getMonitorData: function(RegionId, InstanceId, callback){
-		this.doRequest({
-			Action: 'GetMonitorData',
-			RegionId: RegionId,
-			InstanceId: InstanceId
-		}, function(err, response, body){
-			callback.call(null, body);
-		})
-	},
-	//查询实例资源规格列表
-	describeInstanceTypes: function(callback){
-		this.doRequest({
-			Action: 'DescribeInstanceTypes'
 		}, function(err, response, body){
 			callback.call(null, body);
 		})
